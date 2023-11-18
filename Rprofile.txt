@@ -1,0 +1,28 @@
+options(
+  usethis.description = list(
+    `Authors@R` = 'person("firstname", "surname", email = "my@google.com", role = c("aut", "cre"))',
+    License = "MIT + file LICENSE",
+    Language =  "es"
+  )
+)
+
+if(interactive()){
+  options(tidyverse.quiet = TRUE)
+  suppressPackageStartupMessages(suppressWarnings(library(tidyverse)))
+  cat(paste0('\U0001F680', 'your tools loaded'))
+}
+
+options(
+  rsthemes.theme_light = "Nord Snow Storm {rsthemes}",
+  rsthemes.theme_dark = "Nord Polar Night Aurora {rsthemes}",
+  rsthemes.theme_favorite = c(paste("One", c("Light", "Dark"), "{rsthemes}"), 
+                              "Nord Polar Night Aurora {rsthemes}", "Material {rsthemes}")
+)
+
+
+
+
+
+
+
+

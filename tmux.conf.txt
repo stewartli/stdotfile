@@ -1,0 +1,71 @@
+# terminal color
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",*256col*:Tc"
+
+# reload conf (`r) 
+unbind r
+bind r source-file ~/.tmux.conf
+
+# mouse (click/drag)
+set -g mouse on
+
+# tmux window number
+setw -g automatic-rename
+set-option -g renumber-windows on
+set -g base-index 1
+setw -g pane-base-index 1
+
+# theme
+set -g status-style fg=colour110
+set -g pane-border-style fg=colour240
+set -g pane-active-border-style fg=colour243
+set-window-option -g window-status-current-style fg=colour39
+
+set -g status-left '🚀'
+set -g status-left-length 5
+set -g status-right ''
+set -g status-right-length 0
+
+set -g status-right '%a %Y-%m-%d %H:%M'
+set -g status-right-length 20
+
+# vim copy
+set -sg escape-time 0
+set-window-option -g mode-keys vi
+bind-key -T copy-mode-vi 'v' send -X begin-selection     # start selecting text with "v"
+bind-key -T copy-mode-vi 'y' send -X copy-selection      # copy text with "y"
+unbind -T copy-mode-vi MouseDragEnd1Pane                 # don't exit copy mode when dragging with mouse
+
+# key binding
+unbind C-b
+set -g prefix `                                          # leader key
+bind ` send-prefix                                       # you can have prefix2
+
+unbind %                                                 # split pane in cwd
+bind | split-window -h -c "#{pane_current_path}"
+unbind '"'
+bind - split-window -v -c "#{pane_current_path}"
+
+bind -r j resize-pane -D 5                               # resize pane
+bind -r k resize-pane -U 5
+bind -r l resize-pane -R 5
+bind -r h resize-pane -L 5
+bind -r m resize-pane -Z
+
+bind-key -n M-Up select-pane -U                          # Alt+Arrow
+bind-key -n M-Left select-pane -L
+bind-key -n M-Down select-pane -D
+bind-key -n M-Right select-pane -R
+
+# sync panes
+bind-key y set-window-option synchronize-panes\; display-message "sync panes now"
+
+# display-popup
+bind -r p display-popup "R"
+bind -n M-g display-popup "tmux new-session -A -s scratch"
+
+
+
+
+
+

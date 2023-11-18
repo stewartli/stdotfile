@@ -1,0 +1,82 @@
+" Global ------------------------------------------------------------
+let g:netrw_banner=0                        "no header
+let g:netrw_liststyle=3                     "global vars
+" let mapleader = ","                         "leader key \
+
+" Plugs  ------------------------------------------------------------
+call plug#begin()                           "vim-plug
+Plug 'jalvesaq/Nvim-R'
+call plug#end()
+
+" General ------------------------------------------------------------
+syntax on                                   "hls
+syntax enable
+set nocompatible                            "after plugin section
+filetype plugin indent on                   "find support
+
+set t_Co=256                                "term color
+set number                                  "line number
+" set relativenumber
+set cursorline                              "dark line 
+" set cursorcolumn                            
+
+set magic                                   "regex
+set noswapfile                              "wal file
+" set showcmd                                 "show typing cmd
+" set wrap                                    "line wrap
+
+set wildmenu                                "tab-complete 
+set hls is                                  "hlsearch/incsearch
+set ic                                      "ignore case
+
+set path+=**                                "set cwd as root
+set wildignore+=*~,*.o,*.so,*.pyc,__pycache__
+set clipboard=unnamed                       "clipboard
+set clipboard=unnamedplus                   "important added 
+
+set tabstop=4                               "black linting for python
+set softtabstop=4
+set shiftwidth=4
+set textwidth=79
+set expandtab
+set autoindent
+set fileformat=unix
+
+colorscheme atom-dark-256                   "for python
+au BufNewFile,BufRead *.py set ft=python    "nvimR: \aa run python file
+autocmd Filetype python nnoremap <buffer> <leader>aa :w<CR>:vert botright ter python3 "%"<CR>
+" nnoremap <leader>aa :w <CR>:!clear <CR>:!python3 % <CR>
+" nnoremap <leader>aa <Esc>:w <CR>:!clear;python3 % <CR> 
+
+set foldmethod=indent                       "code fold
+set foldlevel=99
+nnoremap <space> za
+vnoremap <space> zf
+
+nnoremap <C-H> <C-W>h                       "move window focus
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+
+nnoremap <Up>    :resize +2<CR>             "resize windows
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
+
+map <C-n>        :Lex!<CR>                  "like nerd tree 
+map <C-b>        :tabnew<CR>                "tab 
+nnoremap <leader>t   :vert term<CR>        "terminal, no white space
+nmap <leader>x :!xdg-open %<cr><cr>         "open 
+
+
+
+
+
+
+
+
+
+
+
+
+

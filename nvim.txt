@@ -1,0 +1,59 @@
+-- options.lua----------------------------------------------------------
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+-- clipboard: need xsel
+vim.api.nvim_set_option("clipboard", "unnamed")
+
+
+-- keymaps.lua----------------------------------------------------------
+-- comment.nvim Ctrl + /
+vim.api.nvim_set_keymap("n", "<C-_>", "gtc", { noremap = false })
+vim.api.nvim_set_keymap("v", "<C-_>", "goc", { noremap = false })
+
+-- copy to system clipboard: ap
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+-- cursor stay: J
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- :so %
+vim.keymap.set("n", "<leader><leader>", function()
+    vim.cmd("so")
+end)
+
+
+-- Appendix [work on]-----------------------------------------------------
+-- leader key
+vim.g.mapleader = " "
+
+-- :Ex 
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- in tmux: (Ctrl + a) + L does not work
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- bash chomd + x
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- paste: viw
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+
+
+
+
+
+
+
+
+
+
+
+
