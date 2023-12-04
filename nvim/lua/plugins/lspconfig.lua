@@ -12,7 +12,10 @@ return {
 
     local opts = { noremap = true, silent = true }
     local on_attach = function(client, bufnr)
-      opts.buffer = bufnr
+    --  opts.buffer = bufnr
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
+    vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
